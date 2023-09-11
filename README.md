@@ -24,10 +24,10 @@ make test
 
 Refer to the following resources for code references:
 
-<img src="https://github.com/bryankazaka/DEEPPC-Supervised-Learning/graphics/github_logo.png" alt="Github Logo" width="20px"/> Neural Augment
-<img src="https://github.com/bryankazaka/DEEPPC-Supervised-Learning/graphics/github_logo.png" alt="Github Logo" width="20px"/> Exact Match
-<img src="https://github.com/bryankazaka/DEEPPC-Supervised-Learning/graphics/kaggle_logo.webp" alt="Kaggle Logo" width="20px"/> Transfer Learning
-<img src="https://github.com/bryankazaka/DEEPPC-Supervised-Learning/graphics/kaggle_logo.webp" alt="Kaggle Logo" width="20px"/> Multi-label Classification
+<img src="graphics/github_logo.png" alt="Github Logo" width="20px"/> Neural Augment
+<img src="graphics/github_logo.png" alt="Github Logo" width="20px"/> Exact Match
+<img src="graphics/kaggle_logo.webp" alt="Kaggle Logo" width="20px"/> Transfer Learning
+<img src="graphics/kaggle_logo.webp" alt="Kaggle Logo" width="20px"/> Multi-label Classification
 
 ## Datasets
 
