@@ -22,8 +22,6 @@ make test
 
 ## Code Reference List
 
-Refer to the following resources for code references:
-
 - <img src="graphics/github_logo.png" alt="Github Logo" width="20px"/> [Neural Augment](https://github.com/aladdinpersson/Machine-Learning-Collection/tree/master/ML/Pytorch/more_advanced/neuralstyle)
 
 - <img src="graphics/github_logo.png" alt="Github Logo" width="20px"/> [Exact Match](https://gist.github.com/jadhavpritish/1991d808ac4cab908912455178848493#file-one_zero_loss-py)
