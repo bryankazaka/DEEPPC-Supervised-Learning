@@ -19,7 +19,7 @@ This code is inspired by https://www.kaggle.com/code/pmigdal/transfer-learning-w
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-# Load datasets and create DataLoaders
+#Load datasets and create dataLoaders
 def load_data(dir_path, batch_size=32, shuffle_train=True, data_aug=None):
     train_dataset = cd(f"{dir_path}/images", f"{dir_path}/train.csv", data_aug=data_aug)
     val_dataset = cd(f"{dir_path}/images", f"{dir_path}/val.csv")
@@ -77,7 +77,6 @@ def create_model(model_name, num_classes, tl_method):
                     nn.Linear(128, num_classes)
                 ).to(device)
             except:
-                # For SwinTransformer
                 num_ftrs = model.head.in_features
                 model.head = nn.Sequential(
                     nn.Linear(num_ftrs, 128),
@@ -86,11 +85,11 @@ def create_model(model_name, num_classes, tl_method):
                 ).to(device)       
     return model
 
-# Train the model
+#Train the model
 def train_model(model, criterion, optimizer, scheduler, num_epochs, dataloaders, image_datasets, num_classes, model_name, dir_path, da_method, iteration=None):
     since = time.time()
-    save_name = model_name + "_" + dir_path[-4:] + "_def" + iteration + ".pt"
-    best_model_params_path = os.path.join("./models/trained_models/", save_name)
+    save_name = model_name + "_" + dir_path[-4:] + iteration + ".pt"
+    best_model_params_path = os.path.join("./trained_models/", save_name)
     torch.save(model.state_dict(), best_model_params_path)
     best_acc = 0.0
     best_ovr_acc = 0.0
@@ -206,32 +205,33 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs, dataloaders,
     print(f'Best Recall: {best_recall:.4f}')
     model.load_state_dict(torch.load(best_model_params_path))   
 
-#Main execution: Example of use shown below
-def main():
+#Main execution
+def main(config):
     criterion = nn.BCEWithLogitsLoss()
-
-    model_names = ["convnext_base"]
-    dir_paths = ["./dataset/Neck"]
-    data_augmentations = ["RandomCrop"]
-    transfer_learning_methods = ["pretrained"]
-
+    model_names = config.model_names.split(',')  
+    dir_paths = config.dir_paths.split(',')  
+    data_augmentations = config.data_augmentations.split(',')  
+    transfer_learning_methods = config.transfer_learning_methods.split(',')
     #Populate parameters for model creation
     for da_method in data_augmentations:
         for dir_path in dir_paths:
-            dataloaders, image_datasets = load_data(dir_path,data_aug=da_method) #Populate dataloaders
+            dataloaders, image_datasets = load_data(dir_path, data_aug=da_method) 
             num_classes = len(image_datasets['train'].classes)
             for tl_method in transfer_learning_methods:
-                if tl_method == "not_pretrained":
-                    num_epochs =  30
-                else:
-                    num_epochs = 15
+                num_epochs = 30 if tl_method == "not_pretrained" else 15
                 for model_name in model_names:
                     model = create_model(model_name, num_classes, tl_method) #Create model with distict parameters
-                    #Initialize training hyperparameters
-                    out_name = model_name + "_" + tl_method + "_" + da_method
-                    optimizer = optimizer = optim.Adam(model.parameters(), lr=0.001)
+                    #Initialize hyperparameters
+                    out_name = f"{model_name}_{tl_method}_{da_method}"
+                    optimizer = optim.Adam(model.parameters(), lr=0.001)
                     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.0001)
-                    train_model(model, criterion, optimizer,scheduler, num_epochs, dataloaders, image_datasets, num_classes, out_name, dir_path, da_method)
+                    train_model(model, criterion, optimizer, scheduler, num_epochs, dataloaders, image_datasets, num_classes, out_name, dir_path, da_method)
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--model_names', type=str, default='convnext_base')
+    parser.add_argument('--dir_paths', type=str, default='./dataset/Neck')
+    parser.add_argument('--data_augmentations', type=str, default='RandomCrop')
+    parser.add_argument('--transfer_learning_methods', type=str, default='pretrained')
+    config = parser.parse_args()
+    main(config)

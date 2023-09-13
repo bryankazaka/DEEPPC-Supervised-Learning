@@ -16,11 +16,56 @@ make install
 # Virtual Environment Setup
 make venv
 
-# Run the Training Pipeline
-make run
-
-# Run the Testing Pipeline
+# Validate on test set
 make test
+```
+
+## Usage 
+
+To run the script with specific configurations, you can use the command line arguments to specify the various parameters.
+```sh
+python3 src/main.py --model_names <model_name1,model_name2,...> --dir_paths <dir_path1,dir_path2,...> --data_augmentations <data_augmentation1,data_augmentation2,...> --transfer_learning_methods <method1,method2,...>
+```
+### Arguments:
+
+--model_names: Specifies the models to use. Possible options include:
+
+* convnext_tiny
+* convnext_small
+* convnext_base
+* swin_v2_t
+* swin_v2_s
+* swin_v2_b
+* densenet121
+* densenet169
+* densenet201
+* resnet18
+* resnet50
+* resnet152
+* efficientnet_v2_s
+* efficientnet_v2_m
+* efficientnet_v2_l
+
+--dir_paths: Specifies the directory paths for the datasets. Example options:
+
+* ./dataset/Neck
+* ./dataset/lbow
+
+--data_augmentations: Specifies the data augmentation methods to use. Possible options are:
+
+* no_da
+* RandomCrop
+* RandAug
+* NeuralAug
+
+--transfer_learning_methods: Specifies whether to use transfer learning and the method to use. Possible options are:
+
+* pretrained
+* not_pretrained
+
+### Example Usage:
+```sh
+python src/main.py --model_names convnext_base,densenet121 --dir_paths ./dataset/Neck,./dataset/lbow --data_augmentations RandomCrop,RandAug --transfer_learning_methods pretrained,not_pretrained
 ```
 
 ## Code Reference List
@@ -33,16 +78,10 @@ make test
 
 - <img src="graphics/kaggle_logo.webp" alt="Kaggle Logo" width="20px"/> [Multi-label Classification](https://www.kaggle.com/datasets/shivanandmn/multilabel-classification-dataset/code)
 
-## Datasets
-
-Find the datasets in the following links:
-
-- [Elbow Dataset](https://github.com/bryankazaka/DEEPPC-Supervised-Learning/src/trained_models/dataset/Elbow)
-- [Neck Dataset](https://github.com/bryankazaka/DEEPPC-Supervised-Learning/src/trained_models/dataset/Neck)
 
 ## Top Models and Baseline Weights
 
 Access the top models and baseline weights here:
 
-- [Trained Models](https://github.com/bryankazaka/DEEPPC-Supervised-Learning/models/trained_models)
+- [Trained Models](https://github.com/bryankazaka/DEEPPC-Supervised-Learning/trained_models)
 

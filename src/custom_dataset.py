@@ -55,7 +55,7 @@ class CustomDataset(Dataset):
                 ToTensor()
             ]) 
 
-    # This function reads the CSV file and parses the class labels and data entries.
+    #This function reads the CSV file and parses the class labels and data entries
     def parse_csv(self, csv_file):
         with open(csv_file, 'r') as file:
             reader = csv.reader(file)

@@ -21,17 +21,18 @@ da_methods = ["no_da", "RandomCrop", "RandAug", "NeuralAug"]
 datasets = ["lbow", "Neck"]
 
 #Directory code to test all 240 models, provided they exist
-MODEL_PATHS = ["./src/trained_models/" + f"{model}_{pretrained}_{da}_{dataset}.pt" 
+MODEL_PATHS = ["./trained_models/" + f"{model}_{pretrained}_{da}_{dataset}.pt" 
               for model in model_names 
               for pretrained in pretrained_methods
               for da in da_methods 
               for dataset in datasets]
 
-#Directory code to test any one model
-MODEL_PATHS_INDIVIDUAL = ["./src/trained_models/convnext_base_pretrained_no_da_Neck.pt"]
+#Directory code to test any one model - change this to test a given model:
+MODEL_PATHS_INDIVIDUAL = ["./trained_models/convnext_base_pretrained_no_da_Neck.pt"]
+
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-#Testing pipeline - Example of use below
+#Testing pipeline
 def testModels():
     #Write results to text file
     with open('test_out.txt', 'a') as f:
