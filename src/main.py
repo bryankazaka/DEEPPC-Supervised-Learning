@@ -13,6 +13,8 @@ import matplotlib.pyplot as plt
 from PIL import Image
 
 '''
+Author: Winner Kazaka
+Orginisation: UCT
 This code encapsulates data loading, model creation and training pipeline implementations delineated in the paper.
 This code is inspired by https://www.kaggle.com/code/pmigdal/transfer-learning-with-resnet-50-in-pytorch
 '''

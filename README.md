@@ -2,6 +2,11 @@
   <img width="50%" src="graphics/UCT_banner.jpeg" alt="UCT Banner"/>
 </p>
 
+## Authors and Rights
+Student: Winner Kazaka - CS Honours
+Supervisor: Associate Professor Geoff Nitschke
+Organistion: University of Cape Town
+
 ## Abstract
 In the field of Orthopedic Pathology, expert diagnoses can be prone to errors due to human limitations, and having specialized teams is not always feasible. Conversely, machine learning (ML) algorithms excel in image recognition tasks, akin to those performed by medical specialists. Nonetheless, the scarce availability of extensive datasets in the medical field can hamper the optimal performance of these algorithms. This research assesses the efficacy of state-of-the-art (SOTA) Supervised Learning models and strategies, namely Data Augmentation (DA) and Transfer Learning (TL), in enhancing classification accuracy on two medical datasets. The results establish that ConvNeXts are the most proficient image classifiers among the tested models and underscores the effectiveness of pre-training and fine-tuning methodologies in optimizing Deep Learning (DL) models. While DA shows marginal benefits, particularly through Neural Augment, its impact on model accuracy is not substantial. Importantly, the introduction of a new validation technique, Default Validation, notably improves model accuracy by a margin of $1.6\%$ to $6.9\%$.
     
@@ -83,5 +88,12 @@ python src/main.py --model_names convnext_base,densenet121 --dir_paths ./dataset
 
 Access the top models and baseline weights here:
 
-- [Trained Models](https://github.com/bryankazaka/DEEPPC-Supervised-Learning/trained_models)
+- [Trained Models](https://drive.google.com/drive/folders/10W2Gx_Yr3f87Cn1z-3hi-7lZKcVjNqkw?usp=sharing)
+
+## Datasets
+
+Access the Neck and Elbow datasets
+
+- [Datasets](https://drive.google.com/file/d/1Cmvqm1GQw_rIxjMuqTeyeuRGL2ObVOl-/view?usp=drive_link)
+
 
