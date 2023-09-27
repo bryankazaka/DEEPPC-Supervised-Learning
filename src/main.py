@@ -10,6 +10,7 @@ import time
 import numpy as np
 from sklearn.metrics import hamming_loss, f1_score, roc_auc_score, precision_score, recall_score
 import matplotlib.pyplot as plt
+import argparse
 from PIL import Image
 
 '''
@@ -90,7 +91,7 @@ def create_model(model_name, num_classes, tl_method):
 #Train the model
 def train_model(model, criterion, optimizer, scheduler, num_epochs, dataloaders, image_datasets, num_classes, model_name, dir_path, da_method, iteration=None):
     since = time.time()
-    save_name = model_name + "_" + dir_path[-4:] + iteration + ".pt"
+    save_name = model_name + "_" + dir_path[-4:] + ".pt"
     best_model_params_path = os.path.join("./trained_models/", save_name)
     torch.save(model.state_dict(), best_model_params_path)
     best_acc = 0.0
