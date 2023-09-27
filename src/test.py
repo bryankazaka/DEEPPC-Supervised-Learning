@@ -1,5 +1,5 @@
 import torch
-from helpers import CustomDataset as cd
+from custom_dataset import CustomDataset as cd
 from torch.utils.data import DataLoader
 import os
 import numpy as np
@@ -38,7 +38,7 @@ def testModels():
     with open('test_out.txt', 'a') as f:
         #Reconstruct models and populate data loaders via the parameter information embedded in the model names
         for model_path in MODEL_PATHS_INDIVIDUAL:
-            model_name = model_path[24:]
+            model_name = model_path[17:]
             if model_path[-7:] == "lbow.pt":
                 dir_path = "./dataset/Elbow"
             else:
