@@ -5,6 +5,6 @@ venv :
 clean:
 	rm -rf venv
 run:
-	python3 models/main.py
+	python3 src/main.py
 test:
-	python3 models/test.py
+	python3 src/test.py
