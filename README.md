@@ -73,6 +73,11 @@ python3 src/main.py --model_names <model_name1,model_name2,...> --dir_paths <dir
 python src/main.py --model_names convnext_base,densenet121 --dir_paths ./dataset/Neck,./dataset/lbow --data_augmentations RandomCrop,RandAug --transfer_learning_methods pretrained,not_pretrained
 ```
 
+## Paper
+
+- [Paper](https://projects.cs.uct.ac.za/honsproj/cgi-bin/view/2023/chetty_kazaka_slaven.zip/resources/KZKWIN001_DEEPPC_SupervisedLearning.pdf)
+
+
 ## Code Reference List
 
 - <img src="graphics/github_logo.png" alt="Github Logo" width="20px"/> [Neural Augment](https://github.com/aladdinpersson/Machine-Learning-Collection/tree/master/ML/Pytorch/more_advanced/neuralstyle)
